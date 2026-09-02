@@ -14,6 +14,13 @@ export const metadata: Metadata = {
   },
   description:
     "Velora: modulare 3D-gedruckte Halterungen und ausgewählte Padel-Produkte. Versand in der Schweiz, Zahlung mit TWINT, Karte oder Rechnung.",
+  openGraph: {
+    type: "website",
+    locale: "de_CH",
+    siteName: site.name,
+    url: site.url,
+  },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
