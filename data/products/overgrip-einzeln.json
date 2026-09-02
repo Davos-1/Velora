@@ -1,0 +1,24 @@
+{
+  "sku": "VP-GRP-1ER",
+  "slug": "overgrip-einzeln",
+  "name": "Overgrip einzeln",
+  "kategorie": "grips",
+  "preisChf": 5.9,
+  "beschreibung": "Dieses Overgrip sorgt für sicheren, rutschfesten Halt auch bei schweisstreibenden Rallyes. Die griffige Oberfläche nimmt Feuchtigkeit auf und behält ihre Textur über viele Trainingseinheiten hinweg.\n\nDas dünne, leicht klebende Material lässt sich schnell und faltenfrei um den Griff wickeln – perfekt, um vor dem nächsten Match einen frischen Griff aufzuziehen.\n\nErhältlich in mehreren Farben, passend zum eigenen Racket-Setup.",
+  "details": {
+    "material": "Perforiertes Polyurethan",
+    "masse": "1 Stück, 275 x 25 cm"
+  },
+  "varianten": {
+    "typ": "farbe",
+    "optionen": [
+      { "code": "WHT", "label": "Weiss", "hex": "#F2F2EE" },
+      { "code": "BLK", "label": "Schwarz", "hex": "#1A1D21" },
+      { "code": "PET", "label": "Petrol", "hex": "#147A80" }
+    ]
+  },
+  "quelle": "import",
+  "lieferzeitText": "Auf Lager",
+  "bilder": ["/images/products/overgrip-einzeln-1.webp", "/images/products/overgrip-einzeln-2.webp"],
+  "aktiv": true
+}
