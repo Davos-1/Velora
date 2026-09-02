@@ -1,6 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useCart } from "@/components/cart/CartProvider";
 import type { Product } from "@/types/product";
 import { formatChf } from "@/lib/format";
 import { Button } from "@/components/ui/Button";
@@ -16,18 +18,31 @@ type Props = {
 
 /**
  * Client island for variant choice, bundle option and the (sticky) CTA.
- * Cart wiring lands in stage 3 – onAdd is a placeholder until then.
  */
 export function ProductPurchase({ product, bundle }: Props) {
   const { typ, optionen } = product.varianten;
   const [variant, setVariant] = useState<string>(optionen[0]?.code ?? "");
   const [withBundle, setWithBundle] = useState(false);
+  const [added, setAdded] = useState(false);
+  const cart = useCart();
+
+  useEffect(() => {
+    if (!added) return;
+    const t = window.setTimeout(() => setAdded(false), 4000);
+    return () => window.clearTimeout(t);
+  }, [added]);
 
   const price = withBundle && bundle ? bundle.setPrice : product.preisChf;
   const singlePrice = bundle ? product.preisChf + bundle.partner.preisChf : product.preisChf;
 
   function onAdd() {
-    // TODO(stage 3): add { sku: product.sku, variant, withBundle } to the cart
+    cart.add({
+      sku: product.sku,
+      variantCode: typ ? variant : null,
+      qty: 1,
+      ...(withBundle && bundle ? { bundleWithSku: bundle.partner.sku } : {}),
+    });
+    setAdded(true);
   }
 
   return (
@@ -57,6 +72,16 @@ export function ProductPurchase({ product, bundle }: Props) {
             In den Warenkorb
           </Button>
         </div>
+        <p role="status" aria-live="polite" className="mx-auto max-w-(--container-max) text-sm text-success md:mt-3">
+          {added && (
+            <>
+              Hinzugefügt.{" "}
+              <Link href="/warenkorb" className="font-medium underline underline-offset-2">
+                Zum Warenkorb
+              </Link>
+            </>
+          )}
+        </p>
       </div>
     </div>
   );
